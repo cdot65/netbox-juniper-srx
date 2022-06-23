@@ -16,7 +16,7 @@ After activating NetBox's virtual environment, follow the [standard Python packa
 
 ```bash
 $ source /opt/netbox/venv/bin/activate
-$ pip install netbox-bgp
+$ pip install netbox-juniper-security
 ```
 
 We will need to tell NetBox to look for our plugin within the `/opt/netbox/netbox/netbox/configuration.py` file
