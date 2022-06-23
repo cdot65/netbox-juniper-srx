@@ -17,6 +17,9 @@ class SecurityPolicy(NetBoxModel):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("plugins:netbox_juniper_srx:securitypolicy", args=[self.pk])
+
 
 class SecurityPolicyRule(NetBoxModel):
     action = models.CharField(max_length=30)
@@ -37,3 +40,6 @@ class SecurityPolicyRule(NetBoxModel):
 
     def __str__(self):
         return f"{self.security_policy}: Rule {self.index}"
+
+    def get_absolute_url(self):
+        return reverse("plugins:netbox_juniper_srx:securitypolicyrule", args=[self.pk])
