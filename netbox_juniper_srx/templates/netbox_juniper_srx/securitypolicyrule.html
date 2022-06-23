@@ -1,0 +1,86 @@
+{% extends 'generic/object.html' %} {% block content %}
+<div class="row mb-3">
+  <div class="col col-md-6">
+    <div class="card">
+      <h5 class="card-header">Security Policy Rule</h5>
+      <div class="card-body">
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">Security Policy</th>
+            <td>
+              <a href="{{ object.security_policy.get_absolute_url }}"
+                >{{ object.security_policy }}</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Index</th>
+            <td>{{ object.index }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>{{ object.description|placeholder }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {% include 'inc/panels/custom_fields.html' %} {% include
+    'inc/panels/tags.html' %}
+  </div>
+  <div class="col col-md-6">
+    <div class="card">
+      <h5 class="card-header">Details</h5>
+      <div class="card-body">
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">Source Prefix</th>
+            <td>
+              {% if object.address_source %}
+              <a href="{{ object.address_source.get_absolute_url }}"
+                >{{ object.address_source }}</a
+              >
+              {% else %} {{ ''|placeholder }} {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Destination Prefix</th>
+            <td>
+              {% if object.address_destination %}
+              <a href="{{ object.address_destination.get_absolute_url }}"
+                >{{ object.address_destination }}</a
+              >
+              {% else %} {{ ''|placeholder }} {% endif %}
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Application</th>
+            <td>
+              {% if object.application %}
+              <a href="{{ object.application.get_absolute_url }}"
+                >{{ object.application }}</a
+              >
+              {% else %} {{ ''|placeholder }} {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Dynamic Application</th>
+            <td>
+              {% if object.dynamic_application %}
+              <a href="{{ object.dynamic_application.get_absolute_url }}"
+                >{{ object.dynamic_application }}</a
+              >
+              {% else %} {{ ''|placeholder }} {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Action</th>
+            <td>{{ object.get_action_display }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
