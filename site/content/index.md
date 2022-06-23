@@ -1,4 +1,4 @@
 ---
 template: layouts/home.html
-title: Juniper Security NetBox Plugin
+title: Juniper SRX NetBox Plugin
 ---

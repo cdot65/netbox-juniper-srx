@@ -20,13 +20,13 @@ from os import path
 
 from setuptools import setup, find_packages
 
-NAME = "netbox-juniper-security"
+NAME = "netbox-juniper-srx"
 VERSION = "0.0.1"
 AUTHOR = "Calvin Remsburg"
 AUTHOR_EMAIL = "cremsburg.dev@gmail.com"
-URL = "https://github.com/cdot65/netbox-juniper-security"
+URL = "https://github.com/cdot65/netbox-juniper-srx"
 
-DESCRIPTION = "Juniper Security NetBox plugin"
+DESCRIPTION = "Juniper SRX NetBox Plugin"
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
