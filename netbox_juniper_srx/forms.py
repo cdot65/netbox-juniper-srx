@@ -9,7 +9,18 @@ class SecurityPolicyForm(NetBoxModelForm):
 
     class Meta:
         model = SecurityPolicy
-        fields = ("name", "from_zone", "to_zone", "default_action", "comments", "tags")
+        fields = (
+            "name",
+            "from_zone",
+            "to_zone",
+            "default_action",
+            "description",
+            "device",
+            "site",
+            "tenant",
+            "comments",
+            "tags",
+        )
 
 
 class SecurityPolicyRuleForm(NetBoxModelForm):
@@ -26,6 +37,7 @@ class SecurityPolicyRuleForm(NetBoxModelForm):
             "index",
             "name",
             "security_policy",
+            "device",
             "action",
             "tags",
         )
