@@ -47,3 +47,29 @@ class SecurityPolicyRuleEditView(generic.ObjectEditView):
 
 class SecurityPolicyRuleDeleteView(generic.ObjectDeleteView):
     queryset = models.SecurityPolicyRule.objects.all()
+
+
+class SecurityZoneView(generic.ObjectView):
+    queryset = models.SecurityZone.objects.all()
+
+    # def get_extra_context(self, request, instance):
+    #     table = tables.SecurityZoneInterfacesTable(instance.rules.all())
+    #     table.configure(request)
+
+    #     return {
+    #         "interfaces_table": table,
+    #     }
+
+
+class SecurityZoneListView(generic.ObjectListView):
+    queryset = models.SecurityZone.objects.all()
+    table = tables.SecurityZoneTable
+
+
+class SecurityZoneEditView(generic.ObjectEditView):
+    queryset = models.SecurityZone.objects.all()
+    form = forms.SecurityZoneForm
+
+
+class SecurityZoneDeleteView(generic.ObjectDeleteView):
+    queryset = models.SecurityZone.objects.all()

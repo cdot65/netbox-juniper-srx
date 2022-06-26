@@ -1,11 +1,12 @@
 import django_tables2 as tables
 
 from netbox.tables import NetBoxTable, ChoiceFieldColumn
-from .models import SecurityPolicy, SecurityPolicyRule
+from .models import SecurityPolicy, SecurityPolicyRule, SecurityZone
 
 
 class SecurityPolicyTable(NetBoxTable):
     name = tables.Column(linkify=True)
+    device = tables.Column(linkify=True)
     default_action = ChoiceFieldColumn()
     rule_count = tables.Column()
 
@@ -14,17 +15,29 @@ class SecurityPolicyTable(NetBoxTable):
         fields = (
             "pk",
             "id",
+            "device",
+            "site",
+            "tenant",
             "name",
             "from_zone",
             "to_zone",
             "default_action",
+            "description",
             "comments",
             "actions",
         )
-        default_columns = ("name", "from_zone", "to_zone", "default_action")
+        default_columns = (
+            "name",
+            "from_zone",
+            "to_zone",
+            "default_action",
+            "description",
+            "device",
+        )
 
 
 class SecurityPolicyRuleTable(NetBoxTable):
+    device = tables.Column(linkify=True)
     security_policy = tables.Column(linkify=True)
     index = tables.Column(linkify=True)
     action = ChoiceFieldColumn()
@@ -45,13 +58,45 @@ class SecurityPolicyRuleTable(NetBoxTable):
             "security_policy",
         )
         default_columns = (
-            "index",
             "security_policy",
-            "name",
+            "index",
             "description",
             "address_source",
             "address_destination",
             "application",
             "action",
             "actions",
+        )
+
+
+class SecurityZoneTable(NetBoxTable):
+    name = tables.Column(linkify=True)
+    device = tables.Column(linkify=True)
+    interfaces = tables.Column(linkify=True)
+    inbound_protocols = tables.Column()
+    inbound_services = tables.Column()
+
+    class Meta(NetBoxTable.Meta):
+        model = SecurityZone
+        fields = (
+            "pk",
+            "id",
+            "device",
+            "site",
+            "tenant",
+            "name",
+            "interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "description",
+            "comments",
+            "actions",
+        )
+        default_columns = (
+            "name",
+            "device",
+            "interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "description",
         )

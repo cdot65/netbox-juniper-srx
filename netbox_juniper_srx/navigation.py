@@ -20,6 +20,16 @@ securitypolicyrule_buttons = [
     )
 ]
 
+securityzone_buttons = [
+    PluginMenuButton(
+        link="plugins:netbox_juniper_srx:securityzone_add",
+        title="Add",
+        icon_class="mdi mdi-plus-thick",
+        color=ButtonColorChoices.GREEN,
+    )
+]
+
+
 menu_items = (
     PluginMenuItem(
         link="plugins:netbox_juniper_srx:securitypolicy_list",
@@ -30,5 +40,10 @@ menu_items = (
         link="plugins:netbox_juniper_srx:securitypolicyrule_list",
         link_text="Security Policy Rules",
         buttons=securitypolicyrule_buttons,
+    ),
+    PluginMenuItem(
+        link="plugins:netbox_juniper_srx:securityzone_list",
+        link_text="Security Zones",
+        buttons=securityzone_buttons,
     ),
 )

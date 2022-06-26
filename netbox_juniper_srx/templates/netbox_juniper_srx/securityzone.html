@@ -1,10 +1,15 @@
 {% extends 'generic/object.html' %}
 {% load render_table from django_tables2 %}
+
+{% block breadcrumbs %}
+<li class="breadcrumb-item"><a href="{% url 'plugins:netbox_juniper_srx:securityzone_list' %}">Security Policies</a></li>
+{% endblock %}
+
 {% block content %}
 <div class="row mb-3">
   <div class="col col-md-6">
     <div class="card">
-      <h5 class="card-header">Security Policy</h5>
+      <h5 class="card-header">Security Zones</h5>
       <div class="card-body">
         <table class="table table-hover attr-table">
           <tr>
@@ -12,24 +17,32 @@
             <td>{{ object.name }}</td>
           </tr>
           <tr>
-            <th scope="row">Source Zone</th>
-            <td>{{ object.from_zone }}</td>
+            <th scope="row">Application Tracking</th>
+            <td>{{ object.app_tracking }}</td>
           </tr>
           <tr>
-            <th scope="row">Destination Zone</th>
-            <td>{{ object.to_zone }}</td>
+            <th scope="row">Interfaces</th>
+            <td>{{ object.interfaces }}</td>
           </tr>
           <tr>
-            <th scope="row">Default Action</th>
-            <td>{{ object.get_default_action_display }}</td>
+            <th scope="row">Host Inbound Protocols</th>
+            <td>{{ object.inbound_protocols }}</td>
           </tr>
           <tr>
-            <th scope="row">Rule Count</th>
-            <td>{{ object.rules.count }}</td>
+            <th scope="row">Host Inbound Services</th>
+            <td>{{ object.inbound_services }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Status</th>
+            <td>{{ object.status }}</td>
           </tr>
           <tr>
             <th scope="row">Description</th>
             <td>{{ object.description }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Comments</th>
+            <td>{{ object.comments }}</td>
           </tr>
         </table>
       </div>
@@ -59,16 +72,6 @@
 
     {% include 'inc/panels/tags.html' %}
     {% include 'inc/panels/comments.html' %}
-  </div>
-</div>
-<div class="row">
-  <div class="col col-md-12">
-    <div class="card">
-      <h5 class="card-header">Rules</h5>
-      <div class="card-body table-responsive">
-        {% render_table rules_table %}
-      </div>
-    </div>
   </div>
 </div>
 {% endblock content %}

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from netbox.api.serializers import NetBoxModelSerializer, WritableNestedSerializer
-from ..models import SecurityPolicy, SecurityPolicyRule
+from ..models import SecurityPolicy, SecurityPolicyRule, SecurityZone
 
 
 class NestedSecurityPolicySerializer(WritableNestedSerializer):
@@ -72,4 +72,31 @@ class SecurityPolicyRuleSerializer(NetBoxModelSerializer):
             "created",
             "last_updated",
             "description",
+        )
+
+
+class SecurityZoneSerializer(NetBoxModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name="plugins-api:netbox_juniper_srx-api:securityzone-detail"
+    )
+
+    class Meta:
+        model = SecurityZone
+        fields = (
+            "id",
+            "url",
+            "display",
+            "name",
+            "device",
+            "interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "app_tracking",
+            "status",
+            "description",
+            "comments",
+            "tags",
+            "custom_fields",
+            "created",
+            "last_updated",
         )

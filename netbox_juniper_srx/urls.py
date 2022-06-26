@@ -20,4 +20,12 @@ urlpatterns = (
     path('policy-rules/<int:pk>/delete/', views.SecurityPolicyRuleDeleteView.as_view(), name='securitypolicyrule_delete'),
     path('policy-rules/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='securitypolicyrule_changelog', kwargs={'model': models.SecurityPolicyRule}),
 
+    # Security Zones
+    path('zones/', views.SecurityZoneListView.as_view(), name='securityzone_list'),
+    path('zones/add/', views.SecurityZoneEditView.as_view(), name='securityzone_add'),
+    path('zones/<int:pk>/', views.SecurityZoneView.as_view(), name='securityzone'),
+    path('zones/<int:pk>/edit/', views.SecurityZoneEditView.as_view(), name='securityzone_edit'),
+    path('zones/<int:pk>/delete/', views.SecurityZoneDeleteView.as_view(), name='securityzone_delete'),
+    path('zones/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='securityzone_changelog', kwargs={'model': models.SecurityZone}),
+
 )

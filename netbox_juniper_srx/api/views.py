@@ -2,7 +2,11 @@ from django.db.models import Count
 from netbox.api.viewsets import NetBoxModelViewSet
 
 from .. import filtersets, models
-from .serializers import SecurityPolicySerializer, SecurityPolicyRuleSerializer
+from .serializers import (
+    SecurityPolicySerializer,
+    SecurityPolicyRuleSerializer,
+    SecurityZoneSerializer,
+)
 
 
 class SecurityPolicyViewSet(NetBoxModelViewSet):
@@ -18,3 +22,8 @@ class SecurityPolicyRuleViewSet(NetBoxModelViewSet):
     )
     serializer_class = SecurityPolicyRuleSerializer
     filterset_class = filtersets.SecurityPolicyRuleFilterSet
+
+
+class SecurityZoneViewSet(NetBoxModelViewSet):
+    queryset = models.SecurityZone.objects.prefetch_related("tags")
+    serializer_class = SecurityZoneSerializer
