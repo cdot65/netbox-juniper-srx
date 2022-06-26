@@ -1,4 +1,10 @@
-{% extends 'generic/object.html' %} {% block content %}
+{% extends 'generic/object.html' %}
+
+{% block breadcrumbs %}
+<li class="breadcrumb-item"><a href="{% url 'plugins:netbox_juniper_srx:securitypolicy_list' %}">Security Policies</a></li>
+{% endblock %}
+
+{% block content %}
 <div class="row mb-3">
   <div class="col col-md-6">
     <div class="card">
@@ -16,6 +22,10 @@
           <tr>
             <th scope="row">Index</th>
             <td>{{ object.index }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>{{ object.description|placeholder }}</td>
           </tr>
           <tr>
             <th scope="row">Comments</th>

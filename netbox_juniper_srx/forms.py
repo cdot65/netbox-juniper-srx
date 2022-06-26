@@ -11,13 +11,11 @@ class SecurityPolicyForm(NetBoxModelForm):
         model = SecurityPolicy
         fields = (
             "name",
+            "device",
             "from_zone",
             "to_zone",
             "default_action",
             "description",
-            "device",
-            "site",
-            "tenant",
             "comments",
             "tags",
         )
