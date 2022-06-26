@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "netbox-juniper-srx"
-version = "0.0.2"
+version = "0.0.3"
 description = "Netbox plugin to manage Juniper SRX security configuration objects."
 authors = ["Calvin Remsburg <cremsburg.dev@gmail.com>"]
 license = "Apache 2.0"

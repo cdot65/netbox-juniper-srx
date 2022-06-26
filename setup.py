@@ -21,7 +21,7 @@ from os import path
 from setuptools import setup, find_packages
 
 NAME = "netbox-juniper-srx"
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 AUTHOR = "Calvin Remsburg"
 AUTHOR_EMAIL = "cremsburg.dev@gmail.com"
 URL = "https://github.com/cdot65/netbox-juniper-srx"

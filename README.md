@@ -8,7 +8,7 @@ This [Netbox](https://github.com/cdot65/netbox-juniper-srx) plugin will enable y
 
 | Netbox | Plugin |
 |---|---|
-| 3.2 | 0.0.2 |
+| 3.2 | 0.0.3 |
 
 ## Installation
 
