@@ -1,7 +1,7 @@
 import django_tables2 as tables
 
 from netbox.tables import NetBoxTable, ChoiceFieldColumn
-from .models import SecurityPolicy, SecurityPolicyRule
+from .models import SecurityPolicy, SecurityPolicyRule, SecurityZone
 
 
 class SecurityPolicyTable(NetBoxTable):
@@ -67,4 +67,37 @@ class SecurityPolicyRuleTable(NetBoxTable):
             "application",
             "action",
             "actions",
+        )
+
+
+class SecurityZoneTable(NetBoxTable):
+    name = tables.Column(linkify=True)
+    device = tables.Column(linkify=True)
+    match_interfaces = tables.Column(linkify=True)
+    inbound_protocols = tables.Column()
+    inbound_services = tables.Column()
+
+    class Meta(NetBoxTable.Meta):
+        model = SecurityZone
+        fields = (
+            "pk",
+            "id",
+            "device",
+            "site",
+            "tenant",
+            "name",
+            "match_interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "description",
+            "comments",
+            "actions",
+        )
+        default_columns = (
+            "device",
+            "name",
+            "match_interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "description",
         )

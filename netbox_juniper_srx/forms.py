@@ -1,7 +1,8 @@
 from django import forms
 from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm
 from utilities.forms.fields import CommentField, DynamicModelChoiceField
-from .models import SecurityPolicy, SecurityPolicyRule
+from .models import SecurityPolicy, SecurityPolicyRule, SecurityZone
+from dcim.models import Interface
 
 
 class SecurityPolicyForm(NetBoxModelForm):
@@ -47,3 +48,23 @@ class SecurityPolicyRuleFilterForm(NetBoxModelFilterSetForm):
         queryset=SecurityPolicy.objects.all(), required=False
     )
     index = forms.IntegerField(required=False)
+
+
+class SecurityZoneForm(NetBoxModelForm):
+    match_interfaces = DynamicModelChoiceField(queryset=Interface.objects.all())
+    comments = CommentField()
+
+    class Meta:
+        model = SecurityZone
+        fields = (
+            "name",
+            "device",
+            "match_interfaces",
+            "inbound_protocols",
+            "inbound_services",
+            "app_tracking",
+            "status",
+            "description",
+            "comments",
+            "tags",
+        )
