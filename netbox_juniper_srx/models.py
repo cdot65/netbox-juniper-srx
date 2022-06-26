@@ -264,9 +264,6 @@ class SecurityPolicyRule(SecurityBase):
 
 class SecurityZone(SecurityBase):
     comments = models.TextField(blank=True)
-    default_action = models.CharField(
-        max_length=100, choices=PolicyActionChoices, default=PolicyActionChoices.DEFAULT
-    )
     name = models.CharField(max_length=100)
     app_tracking = models.BooleanField(default=False)
     match_interfaces = models.ManyToManyField(
