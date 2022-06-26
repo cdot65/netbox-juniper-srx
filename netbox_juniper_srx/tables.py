@@ -27,12 +27,12 @@ class SecurityPolicyTable(NetBoxTable):
             "actions",
         )
         default_columns = (
+            "device",
             "name",
             "from_zone",
             "to_zone",
             "default_action",
             "description",
-            "device",
         )
 
 
