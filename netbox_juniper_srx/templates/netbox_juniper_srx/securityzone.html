@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <th scope="row">Interfaces</th>
-            <td>{{ object.match_interfaces }}</td>
+            <td>{{ object.interfaces }}</td>
           </tr>
           <tr>
             <th scope="row">Host Inbound Protocols</th>
@@ -72,16 +72,6 @@
 
     {% include 'inc/panels/tags.html' %}
     {% include 'inc/panels/comments.html' %}
-  </div>
-</div>
-<div class="row">
-  <div class="col col-md-12">
-    <div class="card">
-      <h5 class="card-header">Rules</h5>
-      <div class="card-body table-responsive">
-        {% render_table rules_table %}
-      </div>
-    </div>
   </div>
 </div>
 {% endblock content %}

@@ -51,7 +51,7 @@ class SecurityPolicyRuleFilterForm(NetBoxModelFilterSetForm):
 
 
 class SecurityZoneForm(NetBoxModelForm):
-    match_interfaces = DynamicModelChoiceField(queryset=Interface.objects.all())
+    interfaces = DynamicModelChoiceField(queryset=Interface.objects.all())
     comments = CommentField()
 
     class Meta:
@@ -59,7 +59,7 @@ class SecurityZoneForm(NetBoxModelForm):
         fields = (
             "name",
             "device",
-            "match_interfaces",
+            "interfaces",
             "inbound_protocols",
             "inbound_services",
             "app_tracking",

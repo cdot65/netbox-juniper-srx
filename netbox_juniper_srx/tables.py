@@ -27,12 +27,12 @@ class SecurityPolicyTable(NetBoxTable):
             "actions",
         )
         default_columns = (
-            "device",
             "name",
             "from_zone",
             "to_zone",
             "default_action",
             "description",
+            "device",
         )
 
 
@@ -58,9 +58,8 @@ class SecurityPolicyRuleTable(NetBoxTable):
             "security_policy",
         )
         default_columns = (
-            "index",
             "security_policy",
-            "name",
+            "index",
             "description",
             "address_source",
             "address_destination",
@@ -73,7 +72,7 @@ class SecurityPolicyRuleTable(NetBoxTable):
 class SecurityZoneTable(NetBoxTable):
     name = tables.Column(linkify=True)
     device = tables.Column(linkify=True)
-    match_interfaces = tables.Column(linkify=True)
+    interfaces = tables.Column(linkify=True)
     inbound_protocols = tables.Column()
     inbound_services = tables.Column()
 
@@ -86,7 +85,7 @@ class SecurityZoneTable(NetBoxTable):
             "site",
             "tenant",
             "name",
-            "match_interfaces",
+            "interfaces",
             "inbound_protocols",
             "inbound_services",
             "description",
@@ -94,9 +93,9 @@ class SecurityZoneTable(NetBoxTable):
             "actions",
         )
         default_columns = (
-            "device",
             "name",
-            "match_interfaces",
+            "device",
+            "interfaces",
             "inbound_protocols",
             "inbound_services",
             "description",

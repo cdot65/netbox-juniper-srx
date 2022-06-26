@@ -88,7 +88,7 @@ class SecurityZoneSerializer(NetBoxModelSerializer):
             "display",
             "name",
             "device",
-            "match_interfaces",
+            "interfaces",
             "inbound_protocols",
             "inbound_services",
             "app_tracking",
