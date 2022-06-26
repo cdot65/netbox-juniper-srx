@@ -6,6 +6,7 @@ from .models import SecurityPolicy, SecurityPolicyRule
 
 class SecurityPolicyTable(NetBoxTable):
     name = tables.Column(linkify=True)
+    device = tables.Column(linkify=True)
     default_action = ChoiceFieldColumn()
     rule_count = tables.Column()
 
@@ -14,17 +15,29 @@ class SecurityPolicyTable(NetBoxTable):
         fields = (
             "pk",
             "id",
+            "device",
+            "site",
+            "tenant",
             "name",
             "from_zone",
             "to_zone",
             "default_action",
+            "description",
             "comments",
             "actions",
         )
-        default_columns = ("name", "from_zone", "to_zone", "default_action")
+        default_columns = (
+            "name",
+            "from_zone",
+            "to_zone",
+            "default_action",
+            "description",
+            "device",
+        )
 
 
 class SecurityPolicyRuleTable(NetBoxTable):
+    device = tables.Column(linkify=True)
     security_policy = tables.Column(linkify=True)
     index = tables.Column(linkify=True)
     action = ChoiceFieldColumn()
