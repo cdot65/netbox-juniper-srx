@@ -1,3 +1,6 @@
+# Calvin Junk
+*.yang
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
