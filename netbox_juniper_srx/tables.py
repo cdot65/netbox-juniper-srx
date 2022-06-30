@@ -72,7 +72,6 @@ class SecurityPolicyRuleTable(NetBoxTable):
 class SecurityZoneTable(NetBoxTable):
     name = tables.Column(linkify=True)
     device = tables.Column(linkify=True)
-    interfaces = tables.Column(linkify=True)
     inbound_protocols = tables.Column()
     inbound_services = tables.Column()
 
@@ -95,7 +94,6 @@ class SecurityZoneTable(NetBoxTable):
         default_columns = (
             "name",
             "device",
-            "interfaces",
             "inbound_protocols",
             "inbound_services",
             "description",

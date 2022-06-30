@@ -1,0 +1,20 @@
+{% block content %}
+  <div class="card">
+    <h5 class="card-header">Security Zone Association</h5>
+    {% if not security_zones %}
+      <div class="card-body">
+        <th>Not assigned to any Security Zones</th>
+      </div>
+    {% else %}
+      <div class="card-body">
+        {% for each in security_zones %}
+          <tr>
+            <td>
+              <a href="{{ each.get_absolute_url }}">{{ each }}</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock content %}
