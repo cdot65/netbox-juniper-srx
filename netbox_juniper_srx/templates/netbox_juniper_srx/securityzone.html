@@ -1,77 +1,84 @@
 {% extends 'generic/object.html' %}
 {% load render_table from django_tables2 %}
-
 {% block breadcrumbs %}
-<li class="breadcrumb-item"><a href="{% url 'plugins:netbox_juniper_srx:securityzone_list' %}">Security Policies</a></li>
+  <li class="breadcrumb-item">
+    <a href="{% url 'plugins:netbox_juniper_srx:securityzone_list' %}">Security Zones</a>
+  </li>
 {% endblock %}
-
 {% block content %}
-<div class="row mb-3">
-  <div class="col col-md-6">
-    <div class="card">
-      <h5 class="card-header">Security Zones</h5>
-      <div class="card-body">
-        <table class="table table-hover attr-table">
-          <tr>
-            <th scope="row">Name</th>
-            <td>{{ object.name }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Application Tracking</th>
-            <td>{{ object.app_tracking }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Interfaces</th>
-            <td>{{ object.interfaces }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Host Inbound Protocols</th>
-            <td>{{ object.inbound_protocols }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Host Inbound Services</th>
-            <td>{{ object.inbound_services }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Status</th>
-            <td>{{ object.status }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Description</th>
-            <td>{{ object.description }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Comments</th>
-            <td>{{ object.comments }}</td>
-          </tr>
-        </table>
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Security Zones</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Name</th>
+              <td>{{ object.name }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Application Tracking</th>
+              <td>{{ object.app_tracking }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Interfaces</th>
+              <td>
+                <ul>
+                  {% for iface in object.interfaces.all %}
+                    <li>
+                      <a href="{{ iface.get_absolute_url }}">{{ iface }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Host Inbound Protocols</th>
+              <td>{{ object.inbound_protocols }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Host Inbound Services</th>
+              <td>{{ object.inbound_services }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Status</th>
+              <td>{{ object.status }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{{ object.description }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Comments</th>
+              <td>{{ object.comments }}</td>
+            </tr>
+          </table>
+        </div>
       </div>
+      {% include 'inc/panels/custom_fields.html' %}
     </div>
-    {% include 'inc/panels/custom_fields.html' %}
-  </div>
-  <div class="col col-md-6">
-    <div class="card">
-      <h5 class="card-header">Device</h5>
-      <div class="card-body">
-        <table class="table table-hover attr-table">
-          <tr>
-            <th scope="row">Device</th>
-            <td>{{ object.device }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Site</th>
-            <td>{{ object.site }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Tenant</th>
-            <td>{{ object.tenant }}</td>
-          </tr>
-        </table>
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Device</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Device</th>
+              <td>{{ object.device }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Site</th>
+              <td>{{ object.site }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tenant</th>
+              <td>{{ object.tenant }}</td>
+            </tr>
+          </table>
+        </div>
       </div>
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
     </div>
-
-    {% include 'inc/panels/tags.html' %}
-    {% include 'inc/panels/comments.html' %}
   </div>
-</div>
 {% endblock content %}

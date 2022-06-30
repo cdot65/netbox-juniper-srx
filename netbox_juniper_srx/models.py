@@ -266,12 +266,12 @@ class SecurityZone(SecurityBase):
     comments = models.TextField(blank=True)
     name = models.CharField(max_length=100)
     app_tracking = models.BooleanField(default=False)
-    interfaces = models.CharField(max_length=100)
-    # interfaces = models.ManyToManyField(
-    #     to="dcim.Interface",
-    #     blank=True,
-    #     related_name="+",
-    # )
+    # interfaces = models.CharField(max_length=100)
+    interfaces = models.ManyToManyField(
+        to="dcim.Interface",
+        blank=True,
+        related_name="security_zones",
+    )
     inbound_protocols = models.CharField(
         max_length=50,
         choices=InboundProtocolChoices,
